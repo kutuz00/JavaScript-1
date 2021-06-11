@@ -39,10 +39,10 @@
 // var a = +(Math.random() * 10 + 5).toFixed();
 
 // function recursion(a, b) {
-//     if (a == b) {
-//         console.log(a);
+//     if (a < 0 || a > b) {
+//         return;
 //     }
-//     else if (a < b) {
+//     else if (a <= b) {
 //         console.log(a);
 //         recursion(a + 1, b);
 //     }
