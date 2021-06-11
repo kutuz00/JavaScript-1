@@ -36,7 +36,19 @@
 
 // 4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15. Дополнительное задание. Сделайте решение вторым способом, используя рекурсию.
 
-// var a = parseInt(Math.random().toFixed(1) * 10 + 5);
+// var a = +(Math.random() * 10 + 5).toFixed();
+
+// function recursion(a, b) {
+//     if (a == b) {
+//         console.log(a);
+//     }
+//     else if (a < b) {
+//         console.log(a);
+//         recursion(a + 1, b);
+//     }
+// }
+// recursion(a, 15);
+
 // switch (a) {
 //     case 0:
 //         console.log(0);
@@ -117,18 +129,18 @@
 
 // 8) *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень.
 
-function power(val, pow) {
-    if (pow == 1) {
-        return val;
-    }
-    else if (pow == 0) {
-        return 1;
-    }
-    else {
-        return val * power(val, pow - 1);
-    }
-}
-alert(power((Math.random() * 10).toFixed(), (Math.random() * 10).toFixed()));
+// function power(val, pow) {
+//     if (pow == 1) {
+//         return val;
+//     }
+//     else if (pow == 0) {
+//         return 1;
+//     }
+//     else {
+//         return val * power(val, pow - 1);
+//     }
+// }
+// alert(power((Math.random() * 10).toFixed(), (Math.random() * 10).toFixed()));
 
 
 ////
