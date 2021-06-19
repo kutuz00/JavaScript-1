@@ -2,8 +2,15 @@
 //По номеру вопроса нужно вывести текст вопроса и текст выбранного ответа
 
 var event, ok;
+function answerHistory(question, questionAnswer) {
+    var answer = {};
+    answer.question = question;
+    answer.questionAnswer = questionAnswer;
+    return answer;
 
+}
 var answers = [];
+
 
 do {//Выводим первый вопрос
     ok = false;
@@ -15,10 +22,13 @@ do {//Выводим первый вопрос
     else {
         ok = isAnswer(works.a0, event);
         if (event == 1) {
-            answers.push(answers.push(works.a00, works.a1));
+
+            answers.push(answerHistory(works.a00, works.a1));
+
         }
         else if (event == 2) {
-            answers.push(answers.push(works.a00, works.a2));
+            answers.push(answerHistory(works.a00, works.a2));
+
         }
 
     }
@@ -34,10 +44,10 @@ switch (event) {
             else {
                 ok = isAnswer(works.b0, event);
                 if (event == 1) {
-                    answers.push(answers.push(works.b00, works.b1));
+                    answers.push(answerHistory(works.b00, works.b1));
                 }
                 else if (event == 2) {
-                    answers.push(answers.push(works.b00, works.b2));
+                    answers.push(answerHistory(works.b00, works.b2));
                 }
             }
         } while (!ok);
@@ -53,10 +63,10 @@ switch (event) {
                     else {
                         ok = isAnswer(works.d0, event);
                         if (event == 1) {
-                            answers.push(answers.push(works.d00, works.d1));
+                            answers.push(answerHistory(works.d00, works.d1));
                         }
                         else if (event == 2) {
-                            answers.push(answers.push(works.d00, works.d2));
+                            answers.push(answerHistory(works.d00, works.d2));
                         }
                     }
                 } while (!ok);
@@ -78,10 +88,10 @@ switch (event) {
             else {
                 ok = isAnswer(works.c0, event);
                 if (event == 1) {
-                    answers.push(answers.push(works.c00, works.c1));
+                    answers.push(answerHistory(works.c00, works.c1));;
                 }
                 else if (event == 2) {
-                    answers.push(answers.push(works.c00, works.c2));
+                    answers.push(answerHistory(works.c00, works.c2));
                 }
             }
         } while (!ok);
@@ -97,10 +107,10 @@ switch (event) {
                     else {
                         ok = isAnswer(works.d0, event);
                         if (event == 1) {
-                            answers.push(answers.push(works.d00, works.d1));
+                            answers.push(answerHistory(works.d00, works.d1));
                         }
                         else if (event == 2) {
-                            answers.push(answers.push(works.d00, works.d2));
+                            answers.push(answerHistory(works.d00, works.d2));
                         }
 
                     }
@@ -118,17 +128,11 @@ switch (event) {
     default:
         alert('Ошибка');
 }
+
 alert('Спасибо за игру');
 var userAnswer = +prompt('Номер вопроса');
-switch (userAnswer) {
-    case 1: console.log(answers[0] + answers[1]);
-        break;
-    case 2: console.log(answers[2] + answers[3]);
-        break;
-    case 3: console.log(answers[4] + answers[5]);
-        break;
-    default: alert('Ошибка');
-}
+alert(answers[userAnswer - 1].question + "\n" + answers[userAnswer - 1].questionAnswer);
+console.log(answers);
 
 
 //------------------------------------------
