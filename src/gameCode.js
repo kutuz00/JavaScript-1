@@ -132,7 +132,6 @@ switch (event) {
 alert('Спасибо за игру');
 var userAnswer = +prompt('Номер вопроса');
 alert(answers[userAnswer - 1].question + "\n" + answers[userAnswer - 1].questionAnswer);
-console.log(answers);
 
 
 //------------------------------------------
