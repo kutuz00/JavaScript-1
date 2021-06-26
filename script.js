@@ -1,4 +1,5 @@
 var items = document.querySelectorAll(".item");
+var cart = document.querySelector(".basket");
 var basketOfGoods = [];
 var button = document.createElement("button");
 var buttons;
@@ -28,26 +29,37 @@ buttons = document.getElementsByTagName('button');
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function (e) {
         var basket = {};
+        var total = 0;
+        var cartItemName = document.createElement("h3");
+        var cartItemCount = document.createElement("p");
+        var cartItemSubtotal = document.createElement("span");
         basket.itemName = e.target.parentElement.firstChild.innerText;
         basket.itemPrice = parseInt(e.target.previousElementSibling.innerText);
         basket.itemCount = 1;
-        console.log(basketOfGoods.length);
+        basket.subTotal = basket.itemPrice * basket.itemCount;
         if (basketOfGoods.length === 0) {
             basketOfGoods.push(basket);
         }
-        else
+        else if (basketOfGoods.length != 0) {
             for (var j = 0; j < basketOfGoods.length; j++) {
 
                 if (basketOfGoods[j].itemName === basket.itemName && basketOfGoods[j].itemPrice === basket.itemPrice) {
-                    basketOfGoods[j].itemCount = basketOfGoods[j].itemCount + basket.itemCount;
+                    basketOfGoods[j].itemCount = parseInt(basketOfGoods[j].itemCount + basket.itemCount);
+                    basketOfGoods[j].subTotal = parseInt(basketOfGoods[j].itemCount * basket.itemPrice);
                     break;
                 }
-                else
+                else if (basketOfGoods[j + 1] === undefined) {
                     basketOfGoods.push(basket);
-
-
+                    break;
+                }
             }
-        console.log(basket);
+        }
+        for (var i = 0; i < basketOfGoods.length; i++) {
+
+            total += basketOfGoods[i].subTotal;
+        }
+        document.querySelector(".basket").append(total);
+        console.log(total);
         console.log(basketOfGoods);
 
     }
