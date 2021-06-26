@@ -55,7 +55,6 @@ for (var i = 0; i < buttons.length; i++) {
             }
         }
         for (var i = 0; i < basketOfGoods.length; i++) {
-
             total += basketOfGoods[i].subTotal;
         }
         document.querySelector(".basket").append(total);
