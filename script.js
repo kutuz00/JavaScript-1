@@ -1,4 +1,5 @@
 var items = document.querySelectorAll(".item");
+var div = document.createElement("div");
 var cart = document.querySelector(".basket");
 var basketOfGoods = [];
 var button = document.createElement("button");
@@ -37,6 +38,10 @@ for (var i = 0; i < buttons.length; i++) {
         basket.itemPrice = parseInt(e.target.previousElementSibling.innerText);
         basket.itemCount = 1;
         basket.subTotal = basket.itemPrice * basket.itemCount;
+        cartItemName.innerHTML = basket.itemName;
+        cartItemCount.innerHTML = basket.itemCount;
+        cartItemSubtotal.innerHTML = basket.itemPrice;
+        document.querySelector(".basket").append(cartItemName.outerHTML + cartItemCount.outerHTML + cartItemSubtotal.outerHTML);
         if (basketOfGoods.length === 0) {
             basketOfGoods.push(basket);
         }
@@ -57,10 +62,7 @@ for (var i = 0; i < buttons.length; i++) {
         for (var i = 0; i < basketOfGoods.length; i++) {
             total += basketOfGoods[i].subTotal;
         }
-        document.querySelector(".basket").append(total);
-        console.log(total);
-        console.log(basketOfGoods);
-
+        totalPrice(total);
     }
 
 }
@@ -74,4 +76,24 @@ function showCatalog() {
         document.querySelector(".items").append(items[i]);
 
     }
+}
+// function addToCart(name, quantity, price) {
+//     var basketDiv = document.createElement("div"),
+
+//     basketHeader.innerText = name;
+//     basketParagraph.innerText = quantity;
+//     basketSpan.innerText = price;
+
+//     console.log(name);
+//     // for (var i = 0; i < basketDiv.length; i++) {
+//     //     basketDiv[i].innerHTML = basketHeader.outerHTML + basketParagraph.outerHTML + basketSpan.outerHTML;
+//     //     document.querySelector(".basket").append(basketDiv[i]);
+
+
+//     // }
+
+// }
+function totalPrice(n) {
+    div.innerText = n;
+    document.querySelector(".basket").append(div)
 }
