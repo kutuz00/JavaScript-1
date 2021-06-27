@@ -30,10 +30,12 @@ buttons = document.getElementsByTagName('button');
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function (e) {
         var basket = {};
-        var total = 0;
         var cartItemName = document.createElement("h3");
         var cartItemCount = document.createElement("p");
         var cartItemSubtotal = document.createElement("span");
+        var basketItem = document.createElement("div");
+        var total = 0;
+        basketItem.classList.add("basket-item");
         basket.itemName = e.target.parentElement.firstChild.innerText;
         basket.itemPrice = parseInt(e.target.previousElementSibling.innerText);
         basket.itemCount = 1;
@@ -41,7 +43,9 @@ for (var i = 0; i < buttons.length; i++) {
         cartItemName.innerHTML = basket.itemName;
         cartItemCount.innerHTML = basket.itemCount;
         cartItemSubtotal.innerHTML = basket.itemPrice;
-        document.querySelector(".basket").append(cartItemName.outerHTML + cartItemCount.outerHTML + cartItemSubtotal.outerHTML);
+        console.log(cartItemName);
+        basketItem.innerHTML = cartItemName.outerHTML + cartItemCount.outerHTML + cartItemSubtotal.outerHTML;
+        document.querySelector(".basket").append(basketItem);
         if (basketOfGoods.length === 0) {
             basketOfGoods.push(basket);
         }
@@ -64,7 +68,6 @@ for (var i = 0; i < buttons.length; i++) {
         }
         totalPrice(total);
     }
-
 }
 function showCatalog() {
     for (var i = 0; i < goods.length; i++) {
@@ -77,23 +80,8 @@ function showCatalog() {
 
     }
 }
-// function addToCart(name, quantity, price) {
-//     var basketDiv = document.createElement("div"),
-
-//     basketHeader.innerText = name;
-//     basketParagraph.innerText = quantity;
-//     basketSpan.innerText = price;
-
-//     console.log(name);
-//     // for (var i = 0; i < basketDiv.length; i++) {
-//     //     basketDiv[i].innerHTML = basketHeader.outerHTML + basketParagraph.outerHTML + basketSpan.outerHTML;
-//     //     document.querySelector(".basket").append(basketDiv[i]);
-
-
-//     // }
-
-// }
 function totalPrice(n) {
-    div.innerText = n;
-    document.querySelector(".basket").append(div)
+    div.innerHTML = "<h4>Total: " + (n) + "</h4>";
+    div.classList.add("total");
+    document.querySelector(".basket").append(div);
 }
